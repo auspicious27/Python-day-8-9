@@ -913,24 +913,555 @@ Your Tasks:
 
 ## Detailed Code Explanation
 
+This project looks small, but isme real app ka complete basic flow hai:
+
+```text
+Data store karo -> Menu show karo -> User input lo -> Action perform karo -> Repeat karo
+```
+
+---
+
+## Part 1 - Empty Task List
+
+### Code
+
+```python
+tasks = []
+```
+
+### Meaning
+
+`tasks` ek empty list hai. Is list ke andar saare tasks store honge.
+
+Start mein list empty hai because user ne abhi koi task add nahi kiya.
+
+### Why We Use List Here
+
+Hume ek task nahi, multiple tasks store karne hain.
+
+Example:
+
+```python
+tasks = [
+    {"title": "Study Python", "done": False},
+    {"title": "Practice lists", "done": True}
+]
+```
+
+List multiple task dictionaries ko ek saath store kar sakti hai.
+
+Real-world:
+
+To-do app mein saare tasks ek task list mein dikhte hain.
+
+---
+
+## Part 2 - `while True` Menu Loop
+
+### Code
+
+```python
+while True:
+```
+
+### Meaning
+
+`while True` ek infinite loop hai. Program baar-baar chalega jab tak `break` nahi milta.
+
+### Why We Use It
+
+Menu-based program mein user multiple actions kar sakta hai:
+
+- Add task
+- View tasks
+- Mark task completed
+- Delete task
+- Exit
+
+Agar loop nahi hoga, program ek choice ke baad close ho jayega.
+
+Real-world:
+
+ATM machine ya mobile app ka menu bhi user ko multiple actions karne deta hai.
+
+---
+
+## Part 3 - Menu Print Lines
+
+### Code
+
+```python
+print("\n===== To-Do List Manager =====")
+print("1. Add Task")
+print("2. View Tasks")
+print("3. Mark Task as Completed")
+print("4. Delete Task")
+print("5. Exit")
+```
+
+### Meaning
+
+Ye lines user ko available options show karti hain.
+
+### Line Meaning
+
 | Code | Meaning |
 |---|---|
-| `tasks = []` | Empty task list. All tasks will be stored here. |
-| `while True:` | Program repeatedly runs until `break`. |
-| Menu `print()` lines | User ko options show karte hain. |
-| `choice = input(...)` | User ka selected option leta hai. |
-| `if choice == "1":` | Add task option. |
-| `title.strip()` | Extra spaces remove karta hai. |
-| `if title == "":` | Empty task block karta hai. |
-| `task = {"title": title, "done": False}` | One task dictionary create karta hai. |
-| `tasks.append(task)` | Task list mein add karta hai. |
-| `elif choice == "2":` | View tasks option. |
-| `len(tasks) == 0` | Check karta hai list empty hai ya nahi. |
-| `enumerate(tasks, start=1)` | Tasks ko numbering ke saath show karta hai. |
-| `task["done"]` | Task completed hai ya pending, ye check karta hai. |
-| `task_number - 1` | User numbering 1 se, list index 0 se. Isliye minus 1. |
-| `tasks.pop(...)` | Selected task delete karta hai. |
-| `break` | Program stop karta hai. |
+| `\n` | New line add karta hai, output clean dikhta hai. |
+| `1. Add Task` | User task add kar sakta hai. |
+| `2. View Tasks` | User existing tasks dekh sakta hai. |
+| `3. Mark Task as Completed` | User task complete mark kar sakta hai. |
+| `4. Delete Task` | User task delete kar sakta hai. |
+| `5. Exit` | User program close kar sakta hai. |
+
+---
+
+## Part 4 - User Choice Input
+
+### Code
+
+```python
+choice = input("Enter your choice (1-5): ")
+```
+
+### Meaning
+
+`input()` user se choice leta hai and `choice` variable mein store karta hai.
+
+Important:
+
+`input()` hamesha string return karta hai.
+
+If user types:
+
+```text
+1
+```
+
+Python stores:
+
+```python
+"1"
+```
+
+That is why we compare with `"1"`, `"2"`, `"3"` as strings.
+
+---
+
+## Part 5 - Add Task Option
+
+### Code
+
+```python
+if choice == "1":
+    title = input("Enter task title: ").strip()
+```
+
+### Meaning
+
+If user enters `"1"`, Add Task block run hota hai.
+
+`input()` task title leta hai.
+
+`.strip()` extra spaces remove karta hai.
+
+Example:
+
+```text
+"   Study Python   "
+```
+
+After `.strip()`:
+
+```text
+"Study Python"
+```
+
+### Why `.strip()` Is Important
+
+User galti se spaces type kar sakta hai. Clean data store karne ke liye `.strip()` useful hai.
+
+---
+
+## Part 6 - Empty Task Validation
+
+### Code
+
+```python
+if title == "":
+    print("Task title cannot be empty.")
+```
+
+### Meaning
+
+Ye check karta hai ki title blank hai ya nahi.
+
+If user only presses Enter, title empty ho jayega.
+
+### Why We Need This
+
+Blank task ka koi meaning nahi hota.
+
+Bad data:
+
+```python
+{"title": "", "done": False}
+```
+
+Real-world apps bhi required fields blank hone par error show karti hain.
+
+---
+
+## Part 7 - Task Dictionary
+
+### Code
+
+```python
+task = {"title": title, "done": False}
+```
+
+### Meaning
+
+Ye line ek task dictionary create karti hai.
+
+| Key | Meaning |
+|---|---|
+| `"title"` | Task ka naam |
+| `"done"` | Task complete hai ya pending |
+| `False` | New task pending hai |
+
+Example:
+
+If user enters:
+
+```text
+Study Python
+```
+
+Task becomes:
+
+```python
+{"title": "Study Python", "done": False}
+```
+
+### Why Dictionary Is Used
+
+Task ke paas multiple details hain. Sirf title nahi, status bhi hai. Isliye dictionary better hai.
+
+---
+
+## Part 8 - Add Task to List
+
+### Code
+
+```python
+tasks.append(task)
+print("Task added successfully.")
+```
+
+### Meaning
+
+`append()` new task ko tasks list ke end mein add karta hai.
+
+Before:
+
+```python
+tasks = []
+```
+
+After:
+
+```python
+tasks = [
+    {"title": "Study Python", "done": False}
+]
+```
+
+Success message user ko confirmation deta hai.
+
+---
+
+## Part 9 - View Tasks Option
+
+### Code
+
+```python
+elif choice == "2":
+```
+
+### Meaning
+
+If user enters `"2"`, View Tasks block run hota hai.
+
+### Empty List Check
+
+```python
+if len(tasks) == 0:
+    print("No tasks found.")
+```
+
+`len(tasks)` list ke total tasks count karta hai.
+
+If count 0 hai, message show hota hai:
+
+```text
+No tasks found.
+```
+
+### Why This Check Is Needed
+
+If no tasks exist, user ko clear message milna chahiye. Empty output confusing hota hai.
+
+---
+
+## Part 10 - Show Tasks with Numbering
+
+### Code
+
+```python
+for index, task in enumerate(tasks, start=1):
+    status = "Completed" if task["done"] else "Pending"
+    print(f"{index}. {task['title']} - {status}")
+```
+
+### Meaning
+
+This code tasks ko numbering ke saath print karta hai.
+
+### `enumerate()` Explanation
+
+`enumerate(tasks, start=1)` list ke har task ke saath number deta hai.
+
+`start=1` ka matlab numbering 1 se start hogi.
+
+Why?
+
+Users usually 1, 2, 3 numbering samajhte hain. Python index 0 se start hota hai, but user ko 0 se numbering dikhana confusing ho sakta hai.
+
+### Status Line Explanation
+
+```python
+status = "Completed" if task["done"] else "Pending"
+```
+
+Meaning:
+
+If `task["done"]` True hai, status Completed hoga. Otherwise Pending hoga.
+
+### Print Line Explanation
+
+```python
+print(f"{index}. {task['title']} - {status}")
+```
+
+This prints:
+
+```text
+1. Study Python - Pending
+```
+
+---
+
+## Part 11 - Mark Task as Completed
+
+### Code
+
+```python
+elif choice == "3":
+```
+
+If user enters `"3"`, complete task block run hota hai.
+
+### Task Number Input
+
+```python
+task_number = int(input("Enter task number: "))
+```
+
+`input()` user se task number leta hai.
+
+`int()` string input ko number mein convert karta hai.
+
+Why?
+
+Range check number ke saath easy hota hai.
+
+### Valid Number Check
+
+```python
+if 1 <= task_number <= len(tasks):
+```
+
+Meaning:
+
+Task number 1 se kam nahi hona chahiye and total tasks se zyada nahi hona chahiye.
+
+If 3 tasks exist, valid numbers:
+
+```text
+1, 2, 3
+```
+
+Invalid:
+
+```text
+0, 4, 5, -1
+```
+
+### Mark Completed
+
+```python
+tasks[task_number - 1]["done"] = True
+```
+
+Why `task_number - 1`?
+
+User numbering starts from 1.
+
+Python list index starts from 0.
+
+Example:
+
+User enters task number 1.
+
+Python index:
+
+```text
+1 - 1 = 0
+```
+
+So first task update hota hai.
+
+Before:
+
+```python
+{"title": "Study Python", "done": False}
+```
+
+After:
+
+```python
+{"title": "Study Python", "done": True}
+```
+
+---
+
+## Part 12 - Delete Task
+
+### Code
+
+```python
+elif choice == "4":
+```
+
+If user enters `"4"`, delete task block run hota hai.
+
+### Empty Check
+
+```python
+if len(tasks) == 0:
+    print("No tasks available to delete.")
+```
+
+If task list empty hai, delete karne ke liye kuch nahi hai.
+
+### Delete Logic
+
+```python
+removed_task = tasks.pop(task_number - 1)
+print(f"Deleted task: {removed_task['title']}")
+```
+
+`pop(index)` selected task remove karta hai.
+
+Removed task `removed_task` variable mein store hota hai.
+
+Then deleted task ka title print hota hai.
+
+Example output:
+
+```text
+Deleted task: Study Python
+```
+
+---
+
+## Part 13 - Exit Program
+
+### Code
+
+```python
+elif choice == "5":
+    print("Thank you for using To-Do List Manager.")
+    break
+```
+
+### Meaning
+
+If user enters `"5"`, thank you message print hota hai and `break` loop stop kar deta hai.
+
+Why `break`?
+
+Because `while True` loop automatically stop nahi hota. Usko stop karne ke liye `break` zaroori hai.
+
+---
+
+## Part 14 - Invalid Choice
+
+### Code
+
+```python
+else:
+    print("Invalid choice. Please enter 1 to 5.")
+```
+
+### Meaning
+
+If user enters anything other than 1 to 5, this block runs.
+
+Example:
+
+```text
+Enter your choice: 9
+Invalid choice. Please enter 1 to 5.
+```
+
+Why?
+
+User mistakes handle karna real apps ka important part hai.
+
+---
+
+## Project Concepts Summary
+
+| Concept | Project Mein Use |
+|---|---|
+| List | Multiple tasks store karne ke liye |
+| Dictionary | Task title and status store karne ke liye |
+| `while True` | Menu baar-baar chalane ke liye |
+| `input()` | User se data lene ke liye |
+| `if-elif-else` | Choice ke according action run karne ke liye |
+| `.strip()` | Extra spaces clean karne ke liye |
+| `append()` | New task add karne ke liye |
+| `len()` | Empty list check karne ke liye |
+| `enumerate()` | Numbering ke saath tasks show karne ke liye |
+| f-string | Clean output ke liye |
+| `int()` | Task number ko number mein convert karne ke liye |
+| `pop()` | Task delete karne ke liye |
+| `break` | Program exit karne ke liye |
+
+## Simple Teacher Explanation
+
+Is project ko class mein aise explain kar sakte ho:
+
+```text
+Pehle empty task list banti hai.
+Phir menu repeatedly show hota hai.
+User choice deta hai.
+Choice ke hisaab se task add, view, complete, delete ya exit hota hai.
+List saare tasks store karti hai.
+Dictionary har task ki details store karti hai.
+```
 
 ## Why This Project Is Important
 
