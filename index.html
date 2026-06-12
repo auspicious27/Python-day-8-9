@@ -166,6 +166,61 @@
       color: #b91c1c;
     }
 
+    .doc-selector {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .doc-card {
+      appearance: none;
+      width: 100%;
+      min-height: 132px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--text);
+      cursor: pointer;
+      padding: 18px;
+      text-align: left;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+      transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+    }
+
+    .doc-card:hover,
+    .doc-card:focus {
+      border-color: var(--accent);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.14);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .doc-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+    }
+
+    .doc-card strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .doc-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .viewer-heading {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
     @media (max-width: 700px) {
       .topbar {
         padding: 16px;
@@ -191,6 +246,10 @@
       h2 {
         font-size: 22px;
       }
+
+      .doc-selector {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -203,37 +262,93 @@
   </header>
 
   <main>
+    <section class="doc-selector" aria-label="Choose notes document">
+      <button class="doc-card" type="button" data-doc="complete">
+        <strong>1. Complete Notes</strong>
+        <span>Detailed English + Hinglish version with full topics and practice.</span>
+      </button>
+      <button class="doc-card" type="button" data-doc="beginner">
+        <strong>2. Beginner Friendly Notes</strong>
+        <span>Easy learner version with real-life examples and detailed code explanations.</span>
+      </button>
+      <button class="doc-card" type="button" data-doc="hinglish">
+        <strong>3. Proper Hinglish Notes</strong>
+        <span>Classroom-style Hinglish explanation for easier teaching and revision.</span>
+      </button>
+    </section>
+
     <article id="content">
-      <p class="loading">Loading notes...</p>
+      <p class="loading">Choose one document above to open the notes.</p>
     </article>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     const content = document.getElementById("content");
-    const notesFile = "python_module_6_7_8_beginner_friendly_notes.md";
+    const cards = Array.from(document.querySelectorAll(".doc-card"));
+    const documents = {
+      complete: {
+        title: "Complete Notes",
+        file: "python_module_6_7_8_complete_notes.md"
+      },
+      beginner: {
+        title: "Beginner Friendly Notes",
+        file: "python_module_6_7_8_beginner_friendly_notes.md"
+      },
+      hinglish: {
+        title: "Proper Hinglish Notes",
+        file: "python_module_6_7_8_proper_hinglish_notes.md"
+      }
+    };
 
-    fetch(notesFile)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Notes file could not be loaded.");
-        }
-        return response.text();
-      })
-      .then((markdown) => {
-        marked.setOptions({
-          gfm: true,
-          breaks: false
-        });
-        content.innerHTML = marked.parse(markdown);
-      })
-      .catch((error) => {
-        content.innerHTML = `
-          <h1>Notes could not be loaded</h1>
-          <p class="error">${error.message}</p>
-          <p>Please check that the Markdown file exists in the same folder as this page.</p>
-        `;
+    marked.setOptions({
+      gfm: true,
+      breaks: false
+    });
+
+    function setActiveCard(docKey) {
+      cards.forEach((card) => {
+        card.classList.toggle("active", card.dataset.doc === docKey);
       });
+    }
+
+    function loadDocument(docKey) {
+      const selected = documents[docKey] || documents.hinglish;
+      setActiveCard(docKey);
+      content.innerHTML = `<p class="loading">Loading ${selected.title}...</p>`;
+
+      fetch(selected.file)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Notes file could not be loaded.");
+          }
+          return response.text();
+        })
+        .then((markdown) => {
+          content.innerHTML = `
+            <p class="viewer-heading">Opened document: ${selected.title}</p>
+            ${marked.parse(markdown)}
+          `;
+          window.location.hash = docKey;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        })
+        .catch((error) => {
+          content.innerHTML = `
+            <h1>Notes could not be loaded</h1>
+            <p class="error">${error.message}</p>
+            <p>Please check that the selected Markdown file exists in the same folder as this page.</p>
+          `;
+        });
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        loadDocument(card.dataset.doc);
+      });
+    });
+
+    const initialDoc = window.location.hash.replace("#", "") || "hinglish";
+    loadDocument(documents[initialDoc] ? initialDoc : "hinglish");
   </script>
 </body>
 </html>
