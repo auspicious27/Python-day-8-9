@@ -1634,6 +1634,1158 @@ E-commerce website mein “sort by price low to high” feature isi type ke logi
 
 ---
 
+# Complete Code Explanation in Simple Hinglish
+
+This section is for teaching and revision. Yahan par document ke important code examples ko aur detail mein explain kiya gaya hai, taaki aap learners ko easily samjha sako.
+
+## How to Explain Any Code to Learners
+
+Jab bhi aap code explain karo, is order ko follow karo:
+
+1. Code ka purpose kya hai?
+2. Kaunsa data store ho raha hai?
+3. Code line-by-line kya kar raha hai?
+4. Output kyu aaya?
+5. Real-world mein iska use kaha hota hai?
+
+Example teaching line:
+
+```text
+Pehle hum data store kar rahe hain, phir us data par operation kar rahe hain, phir final result print kar rahe hain.
+```
+
+---
+
+## Code Explanation 1 - List Creation
+
+### Code
+
+```python
+cart = ["milk", "bread", "rice", "tea"]
+
+print(cart)
+```
+
+### What This Code Does
+
+Ye code ek shopping cart create karta hai. Cart ke andar 4 items store hain.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `cart = [...]` | `cart` naam ka variable ban raha hai. Is variable mein ek list store ho rahi hai. |
+| 1 | `[` and `]` | Square brackets ka matlab hai ye list hai. |
+| 1 | `"milk"` | List ka first item hai. Quotes ka matlab hai ye string/text hai. |
+| 1 | `,` | Comma items ko alag-alag karta hai. |
+| 3 | `print(cart)` | Complete cart list screen par show karega. |
+
+### Output Reason
+
+Output list ke format mein aata hai:
+
+```text
+['milk', 'bread', 'rice', 'tea']
+```
+
+Python list ko square brackets ke saath print karta hai, so learner ko clear dikhta hai ki ye list hai.
+
+### Real-World Use
+
+Shopping cart, playlist, attendance list, marks list, and task list mein list ka use hota hai.
+
+---
+
+## Code Explanation 2 - List Indexing
+
+### Code
+
+```python
+students = ["Rahul", "Priya", "Aman"]
+
+print(students[0])
+print(students[1])
+print(students[-1])
+```
+
+### What This Code Does
+
+Ye code list ke specific students ko index number se access karta hai.
+
+### Index Map
+
+```text
+Value:   Rahul   Priya   Aman
+Index:     0       1      2
+Neg:      -3      -2     -1
+```
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `students = [...]` | Students ki list create hui. |
+| 3 | `students[0]` | Index 0 ka item access ho raha hai. Python mein first item ka index 0 hota hai. |
+| 4 | `students[1]` | Index 1 ka item access ho raha hai, yani second item. |
+| 5 | `students[-1]` | Negative index `-1` last item ko access karta hai. |
+
+### Output Reason
+
+```text
+Rahul
+Priya
+Aman
+```
+
+Because:
+
+- `students[0]` = Rahul
+- `students[1]` = Priya
+- `students[-1]` = Aman
+
+### Common Mistake
+
+```python
+print(students[3])
+```
+
+This gives error because list mein index 3 exist nahi karta. Valid indexes are 0, 1, 2.
+
+---
+
+## Code Explanation 3 - List Slicing
+
+### Code
+
+```python
+students = ["Rahul", "Priya", "Aman", "Neha", "Vikas"]
+
+print(students[0:3])
+print(students[:2])
+print(students[2:])
+print(students[-2:])
+```
+
+### What This Code Does
+
+Ye code list ke parts nikalta hai. Isko slicing bolte hain.
+
+### Line-by-Line Explanation
+
+| Code | Simple Hinglish Explanation |
+|---|---|
+| `students[0:3]` | Index 0 se start karo, index 3 se pehle ruk jao. Output first 3 students. |
+| `students[:2]` | Start blank hai, so Python 0 se start karega. Index 2 se pehle rukega. |
+| `students[2:]` | Index 2 se start karke end tak jayega. |
+| `students[-2:]` | End se last 2 values lega. |
+
+### Output Reason
+
+```text
+['Rahul', 'Priya', 'Aman']
+['Rahul', 'Priya']
+['Aman', 'Neha', 'Vikas']
+['Neha', 'Vikas']
+```
+
+Important rule:
+
+```text
+Stop index include nahi hota.
+```
+
+### Real-World Use
+
+- Top 3 students nikalna
+- Last 5 orders show karna
+- First 10 products display karna
+- Recent messages show karna
+
+---
+
+## Code Explanation 4 - `append()`
+
+### Code
+
+```python
+cart = ["milk", "bread"]
+
+cart.append("rice")
+
+print(cart)
+```
+
+### What This Code Does
+
+Ye code cart ke end mein new item add karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `cart = ["milk", "bread"]` | Cart list mein starting ke 2 items hain. |
+| 3 | `cart.append("rice")` | `append()` cart ke end mein `"rice"` add karta hai. |
+| 5 | `print(cart)` | Updated list print hoti hai. |
+
+### Output Reason
+
+```text
+['milk', 'bread', 'rice']
+```
+
+Rice end mein add hua because `append()` always end par add karta hai.
+
+### Real-World Use
+
+User ne shopping website par “Add to Cart” click kiya. Product cart list ke end mein add ho gaya.
+
+---
+
+## Code Explanation 5 - `insert()`
+
+### Code
+
+```python
+playlist = ["Song A", "Song C"]
+
+playlist.insert(1, "Song B")
+
+print(playlist)
+```
+
+### What This Code Does
+
+Ye code playlist ke beech mein new song add karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `playlist = ["Song A", "Song C"]` | Playlist mein two songs hain. |
+| 3 | `playlist.insert(1, "Song B")` | Index 1 par Song B add karo. |
+| 5 | `print(playlist)` | Updated playlist print karo. |
+
+### Output Reason
+
+```text
+['Song A', 'Song B', 'Song C']
+```
+
+Song B index 1 par add hua. Song C right side shift ho gaya.
+
+### Real-World Use
+
+Music app mein user song ko playlist ke beech mein add kar sakta hai.
+
+---
+
+## Code Explanation 6 - Update List Item
+
+### Code
+
+```python
+tasks = ["study", "sleep", "practice"]
+
+tasks[1] = "revise"
+
+print(tasks)
+```
+
+### What This Code Does
+
+Ye code list ke second item ko update karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `tasks = [...]` | Tasks ki list create hui. |
+| 3 | `tasks[1]` | Index 1 ka item select hua. Index 1 means second item. |
+| 3 | `= "revise"` | Old value `"sleep"` replace hoke `"revise"` ho gayi. |
+| 5 | `print(tasks)` | Updated list print hui. |
+
+### Output Reason
+
+```text
+['study', 'revise', 'practice']
+```
+
+Because index 1 par pehle `sleep` tha. Ab `revise` ho gaya.
+
+### Real-World Use
+
+To-do app mein user existing task edit karta hai.
+
+---
+
+## Code Explanation 7 - `remove()`
+
+### Code
+
+```python
+cart = ["milk", "bread", "rice"]
+
+cart.remove("bread")
+
+print(cart)
+```
+
+### What This Code Does
+
+Ye code cart se bread remove karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `cart = [...]` | Cart mein 3 items hain. |
+| 3 | `cart.remove("bread")` | Python list mein `"bread"` find karega and remove karega. |
+| 5 | `print(cart)` | Updated cart print hoga. |
+
+### Output Reason
+
+```text
+['milk', 'rice']
+```
+
+Bread remove ho gaya, baaki items list mein reh gaye.
+
+### Important Point
+
+`remove()` value ke basis par remove karta hai, index ke basis par nahi.
+
+Wrong item remove karne se bachne ke liye pehle check kar sakte hain:
+
+```python
+if "bread" in cart:
+    cart.remove("bread")
+```
+
+---
+
+## Code Explanation 8 - `pop()`
+
+### Code
+
+```python
+notifications = ["msg1", "msg2", "msg3"]
+
+latest = notifications.pop()
+
+print("Removed:", latest)
+print("Remaining:", notifications)
+```
+
+### What This Code Does
+
+Ye code last notification remove karta hai and usko `latest` variable mein store karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `notifications = [...]` | Notifications ki list create hui. |
+| 3 | `notifications.pop()` | Last item remove hota hai because index nahi diya. |
+| 3 | `latest = ...` | Removed value `latest` mein store hoti hai. |
+| 5 | `print("Removed:", latest)` | Jo item remove hua, wo print hota hai. |
+| 6 | `print("Remaining:", notifications)` | List mein jo items bache hain wo print hote hain. |
+
+### Output Reason
+
+```text
+Removed: msg3
+Remaining: ['msg1', 'msg2']
+```
+
+`msg3` last item tha, so pop ne usko remove kiya.
+
+---
+
+## Code Explanation 9 - Loop Through List
+
+### Code
+
+```python
+students = ["Rahul", "Priya", "Aman"]
+
+for student in students:
+    print("Attendance:", student)
+```
+
+### What This Code Does
+
+Ye code students list ke har student ko one by one print karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `students = [...]` | Students list create hui. |
+| 3 | `for student in students:` | List ka har item one by one `student` variable mein aayega. |
+| 4 | `print(...)` | Current student ka attendance print hoga. |
+
+### Loop Flow
+
+| Round | `student` Value | Printed Output |
+|---|---|---|
+| 1 | Rahul | Attendance: Rahul |
+| 2 | Priya | Attendance: Priya |
+| 3 | Aman | Attendance: Aman |
+
+### Real-World Use
+
+Attendance system, email sending, invoice printing, and file processing mein loop use hota hai.
+
+---
+
+## Code Explanation 10 - Nested List
+
+### Code
+
+```python
+marks = [
+    ["Rahul", 85, 90],
+    ["Priya", 92, 88],
+    ["Aman", 78, 84]
+]
+
+print(marks[0])
+print(marks[1][0])
+print(marks[1][2])
+```
+
+### What This Code Does
+
+Ye code students ke marks table ko nested list ke form mein store karta hai.
+
+### Structure
+
+```text
+Row 0: Rahul, 85, 90
+Row 1: Priya, 92, 88
+Row 2: Aman, 78, 84
+```
+
+### Line-by-Line Explanation
+
+| Code | Simple Hinglish Explanation |
+|---|---|
+| `marks[0]` | First row print hoti hai: Rahul ka data. |
+| `marks[1][0]` | Row 1 ka column 0. Priya ka name. |
+| `marks[1][2]` | Row 1 ka column 2. Priya ka second marks value. |
+
+### Output Reason
+
+```text
+['Rahul', 85, 90]
+Priya
+88
+```
+
+Formula:
+
+```python
+list[row][column]
+```
+
+### Real-World Use
+
+Nested lists table-like data ke liye useful hoti hain: marks table, seating chart, game board, spreadsheet rows.
+
+---
+
+## Code Explanation 11 - Tuple
+
+### Code
+
+```python
+colors = ("red", "green", "blue")
+
+print(colors)
+print(colors[0])
+print(type(colors))
+```
+
+### What This Code Does
+
+Ye code fixed color values ko tuple mein store karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `colors = (...)` | Parentheses tuple create karte hain. |
+| 3 | `print(colors)` | Complete tuple print hota hai. |
+| 4 | `colors[0]` | First item access hota hai. |
+| 5 | `type(colors)` | Data type check hota hai. |
+
+### Output Reason
+
+```text
+('red', 'green', 'blue')
+red
+<class 'tuple'>
+```
+
+Tuple list jaisa access hota hai, but update nahi hota.
+
+### Real-World Use
+
+Tuple fixed data ke liye: GPS location, RGB color, date parts, fixed settings.
+
+---
+
+## Code Explanation 12 - To-Do Project Data Structure
+
+### Code
+
+```python
+tasks = [
+    {"title": "Study Python", "done": False},
+    {"title": "Practice lists", "done": True}
+]
+```
+
+### What This Code Does
+
+Ye code multiple tasks store karta hai. Har task dictionary hai, aur saare tasks ek list mein store hain.
+
+### Structure Explanation
+
+| Part | Meaning |
+|---|---|
+| `tasks = [...]` | Tasks ka collection list mein hai. |
+| `{...}` | Har task ek dictionary hai. |
+| `"title"` | Task ka naam store karta hai. |
+| `"done"` | Task complete hai ya pending, ye store karta hai. |
+| `False` | Task abhi pending hai. |
+| `True` | Task complete ho chuka hai. |
+
+### Real-World Meaning
+
+Real to-do app mein har task ke saath title, status, date, priority, etc. store ho sakte hain. Yahan beginner version mein sirf title and done status rakha gaya hai.
+
+---
+
+## Code Explanation 13 - To-Do Project Menu Loop
+
+### Code
+
+```python
+while True:
+    print("\n===== To-Do List Manager =====")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task as Completed")
+    print("4. Delete Task")
+    print("5. Exit")
+
+    choice = input("Enter your choice (1-5): ")
+```
+
+### What This Code Does
+
+Ye code menu ko repeatedly show karta hai jab tak user exit na kare.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `while True:` | Infinite loop start. Program baar-baar menu show karega. |
+| 2 | `\n` | New line add karta hai, output clean dikhata hai. |
+| 2-7 | `print(...)` | Menu options show karte hain. |
+| 9 | `input(...)` | User se choice leta hai. |
+| 9 | `choice = ...` | User ki choice variable mein store hoti hai. |
+
+### Why `while True`?
+
+Menu-based programs mein user multiple actions kar sakta hai. Agar user exit choose kare, tab `break` se loop stop hota hai.
+
+---
+
+## Code Explanation 14 - Add Task Logic
+
+### Code
+
+```python
+if choice == "1":
+    title = input("Enter task title: ").strip()
+
+    if title == "":
+        print("Task title cannot be empty.")
+    else:
+        task = {"title": title, "done": False}
+        tasks.append(task)
+        print("Task added successfully.")
+```
+
+### What This Code Does
+
+Ye code user se task title leta hai and task list mein add karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `if choice == "1":` | Check karta hai user ne Add Task option choose kiya ya nahi. |
+| 2 | `input(...)` | User se task ka title leta hai. |
+| 2 | `.strip()` | Extra spaces remove karta hai. |
+| 4 | `if title == "":` | Empty title check karta hai. |
+| 5 | `print(...)` | Agar title empty hai, error message show hota hai. |
+| 7 | `task = {...}` | New task dictionary create hoti hai. |
+| 7 | `"done": False` | New task by default pending hota hai. |
+| 8 | `tasks.append(task)` | New task tasks list mein add hota hai. |
+| 9 | `print(...)` | Success message show hota hai. |
+
+### Real-World Use
+
+Task management app mein jab user new task create karta hai, task by default pending hota hai.
+
+---
+
+## Code Explanation 15 - View Tasks Logic
+
+### Code
+
+```python
+elif choice == "2":
+    if len(tasks) == 0:
+        print("No tasks found.")
+    else:
+        print("\nYour Tasks:")
+        for index, task in enumerate(tasks, start=1):
+            status = "Completed" if task["done"] else "Pending"
+            print(f"{index}. {task['title']} - {status}")
+```
+
+### What This Code Does
+
+Ye code all tasks ko numbering ke saath show karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `elif choice == "2":` | Check karta hai user ne View Tasks option choose kiya. |
+| 2 | `len(tasks) == 0` | Check karta hai tasks list empty hai ya nahi. |
+| 3 | `print("No tasks found.")` | Agar list empty hai, message show hota hai. |
+| 5 | `print("\nYour Tasks:")` | Heading print hoti hai. |
+| 6 | `enumerate(tasks, start=1)` | Har task ko numbering ke saath loop karta hai. Number 1 se start hota hai. |
+| 7 | `task["done"]` | Check karta hai task complete hai ya pending. |
+| 7 | `"Completed" if ... else "Pending"` | One-line condition. True ho to Completed, warna Pending. |
+| 8 | `print(f"...")` | Task number, title, and status print karta hai. |
+
+### Why `enumerate()`?
+
+Learner ko list index 0 se confuse na ho, isliye numbering 1 se start karte hain.
+
+Example:
+
+```text
+1. Study Python - Pending
+2. Practice lists - Completed
+```
+
+---
+
+## Code Explanation 16 - Mark Task Completed
+
+### Code
+
+```python
+task_number = int(input("Enter task number: "))
+
+if 1 <= task_number <= len(tasks):
+    tasks[task_number - 1]["done"] = True
+    print("Task marked as completed.")
+else:
+    print("Invalid task number.")
+```
+
+### What This Code Does
+
+Ye selected task ko completed mark karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `input(...)` | User se task number leta hai. |
+| 1 | `int(...)` | Input string ko integer number mein convert karta hai. |
+| 3 | `1 <= task_number <= len(tasks)` | Check karta hai task number valid range mein hai ya nahi. |
+| 4 | `task_number - 1` | User number 1 se start karta hai, but list index 0 se. Isliye minus 1. |
+| 4 | `["done"] = True` | Selected task ka status completed ho jata hai. |
+| 5 | `print(...)` | Success message. |
+| 7 | `print(...)` | Invalid number ke liye error message. |
+
+### Example
+
+If user enters `1`, list index should be `0`.
+
+```text
+task_number - 1 = 1 - 1 = 0
+```
+
+---
+
+## Code Explanation 17 - Dictionary Access
+
+### Code
+
+```python
+student = {
+    "name": "Rahul",
+    "age": 20,
+    "course": "Python"
+}
+
+print(student["name"])
+print(student["course"])
+```
+
+### What This Code Does
+
+Ye code student dictionary se name and course access karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `student = {...}` | Student data dictionary mein store hua. |
+| 2 | `"name": "Rahul"` | Key `name`, value `Rahul`. |
+| 3 | `"age": 20` | Key `age`, value `20`. |
+| 4 | `"course": "Python"` | Key `course`, value `Python`. |
+| 7 | `student["name"]` | Name key ki value access hoti hai. |
+| 8 | `student["course"]` | Course key ki value access hoti hai. |
+
+### Why Dictionary?
+
+Dictionary mein data readable hota hai. `student["name"]` dekhte hi samajh aa raha hai ki name access ho raha hai.
+
+---
+
+## Code Explanation 18 - `get()` Method
+
+### Code
+
+```python
+profile = {
+    "name": "Priya",
+    "email": "priya@example.com"
+}
+
+phone = profile.get("phone", "Phone number not available")
+
+print(phone)
+```
+
+### What This Code Does
+
+Ye code safely phone number access karta hai. Agar phone key nahi hai, default message show hota hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1-4 | `profile = {...}` | User profile dictionary create hui. |
+| 6 | `profile.get("phone", "...")` | Phone key find karta hai. |
+| 6 | `"Phone number not available"` | Agar phone key missing hai, ye default value return hoti hai. |
+| 8 | `print(phone)` | Final value print hoti hai. |
+
+### Output Reason
+
+```text
+Phone number not available
+```
+
+Because profile dictionary mein `phone` key present nahi hai.
+
+---
+
+## Code Explanation 19 - Dictionary Update
+
+### Code
+
+```python
+product = {
+    "name": "Keyboard",
+    "price": 1200
+}
+
+product["stock"] = 10
+product["price"] = 999
+
+print(product)
+```
+
+### What This Code Does
+
+Ye code product mein stock add karta hai and price update karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1-4 | `product = {...}` | Product dictionary create hui. |
+| 6 | `product["stock"] = 10` | New key `stock` add hui. |
+| 7 | `product["price"] = 999` | Existing key `price` ki value update hui. |
+| 9 | `print(product)` | Updated product print hua. |
+
+### Important Rule
+
+If key exists, value update hoti hai.
+
+If key does not exist, new key add hoti hai.
+
+---
+
+## Code Explanation 20 - Loop Through Dictionary
+
+### Code
+
+```python
+invoice = {
+    "Product": "Mouse",
+    "Price": 500,
+    "Quantity": 2,
+    "Total": 1000
+}
+
+for key, value in invoice.items():
+    print(f"{key}: {value}")
+```
+
+### What This Code Does
+
+Ye code invoice dictionary ke all key-value pairs print karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1-6 | `invoice = {...}` | Invoice data dictionary mein store hua. |
+| 8 | `invoice.items()` | Dictionary ke key-value pairs return karta hai. |
+| 8 | `for key, value in ...` | Har pair ko key and value variable mein store karta hai. |
+| 9 | `print(f"{key}: {value}")` | Key and value clean format mein print hota hai. |
+
+### Real-World Use
+
+Invoice, profile, report card, and settings page mein dictionary loop use hota hai.
+
+---
+
+## Code Explanation 21 - Set and Unique Values
+
+### Code
+
+```python
+visitors = {"Rahul", "Priya", "Rahul", "Aman", "Priya"}
+
+print(visitors)
+```
+
+### What This Code Does
+
+Ye code duplicate visitor names ko automatically remove karta hai.
+
+### Explanation
+
+Set duplicate values store nahi karta.
+
+Input values:
+
+```text
+Rahul, Priya, Rahul, Aman, Priya
+```
+
+Unique output:
+
+```text
+Rahul, Priya, Aman
+```
+
+### Real-World Use
+
+Website analytics mein unique visitors count karne ke liye set useful hai.
+
+---
+
+## Code Explanation 22 - Set Operations
+
+### Code
+
+```python
+python_students = {"Rahul", "Priya", "Aman"}
+linux_students = {"Aman", "Neha", "Priya"}
+
+print("All students:", python_students.union(linux_students))
+print("Common students:", python_students.intersection(linux_students))
+print("Only Python:", python_students.difference(linux_students))
+```
+
+### What This Code Does
+
+Ye code two course batches compare karta hai.
+
+### Explanation Table
+
+| Code | Simple Hinglish Explanation |
+|---|---|
+| `union()` | Dono sets ke all unique students. |
+| `intersection()` | Jo students dono courses mein common hain. |
+| `difference()` | Jo Python mein hain but Linux mein nahi. |
+
+### Real-World Use
+
+Institute ko pata chal sakta hai:
+
+- Total unique students kitne hain
+- Dono courses mein common students kaun hain
+- Sirf Python wale students kaun hain
+
+---
+
+## Code Explanation 23 - Basic Function
+
+### Code
+
+```python
+def greet():
+    print("Hello, welcome to Python!")
+
+greet()
+```
+
+### What This Code Does
+
+Ye code ek function define karta hai and then usko call karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `def greet():` | `greet` naam ka function define hua. |
+| 2 | `print(...)` | Function ke andar ka kaam. |
+| 4 | `greet()` | Function call hua, tab print statement run hua. |
+
+### Important Point
+
+Function define karne se code run nahi hota. Function call karna zaroori hai.
+
+---
+
+## Code Explanation 24 - Function with Arguments
+
+### Code
+
+```python
+def welcome(name):
+    print(f"Welcome {name}")
+
+welcome("Rahul")
+welcome("Priya")
+```
+
+### What This Code Does
+
+Ye function different users ke liye welcome message print karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `def welcome(name):` | Function ek input leta hai called `name`. |
+| 2 | `print(f"Welcome {name}")` | Name ko message ke andar place karta hai. |
+| 4 | `welcome("Rahul")` | Function ko Rahul value di gayi. |
+| 5 | `welcome("Priya")` | Function ko Priya value di gayi. |
+
+### Parameter vs Argument
+
+| Word | Meaning |
+|---|---|
+| Parameter | Function definition mein variable, like `name`. |
+| Argument | Function call mein actual value, like `"Rahul"`. |
+
+---
+
+## Code Explanation 25 - Function with Return
+
+### Code
+
+```python
+def calculate_total(price, quantity):
+    total = price * quantity
+    return total
+
+bill = calculate_total(500, 3)
+final_bill = bill + 50
+
+print("Final bill:", final_bill)
+```
+
+### What This Code Does
+
+Ye code product total calculate karta hai, then delivery charge add karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `def calculate_total(price, quantity):` | Function two inputs leta hai: price and quantity. |
+| 2 | `total = price * quantity` | Total price calculate hoti hai. |
+| 3 | `return total` | Total function ke bahar bheja jata hai. |
+| 5 | `bill = calculate_total(500, 3)` | Function call hota hai. Return value `bill` mein store hoti hai. |
+| 6 | `final_bill = bill + 50` | Delivery charge 50 add hota hai. |
+| 8 | `print(...)` | Final bill print hota hai. |
+
+### Why `return`?
+
+`return` value ko aage use karne ke liye deta hai. Agar sirf `print()` karte, to value variable mein store nahi hoti.
+
+---
+
+## Code Explanation 26 - Default Argument
+
+### Code
+
+```python
+def create_user(username, role="student"):
+    print(f"Username: {username}, Role: {role}")
+
+create_user("rahul")
+create_user("admin1", "admin")
+```
+
+### What This Code Does
+
+Ye function user create message print karta hai. Agar role na diya jaye, role automatically student hota hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1 | `role="student"` | Role ki default value student set hai. |
+| 4 | `create_user("rahul")` | Sirf username diya, so role default student use hua. |
+| 5 | `create_user("admin1", "admin")` | Username and role dono diye, so admin use hua. |
+
+### Real-World Use
+
+Portal mein mostly users students hote hain. Isliye default role student rakha.
+
+---
+
+## Code Explanation 27 - Keyword Arguments
+
+### Code
+
+```python
+def book_ticket(name, source, destination):
+    print(f"{name} booked ticket from {source} to {destination}")
+
+book_ticket(destination="Mumbai", name="Rahul", source="Delhi")
+```
+
+### What This Code Does
+
+Ye code ticket booking message print karta hai.
+
+### Line-by-Line Explanation
+
+| Code | Simple Hinglish Explanation |
+|---|---|
+| `destination="Mumbai"` | Destination value directly destination parameter ko milegi. |
+| `name="Rahul"` | Name value directly name parameter ko milegi. |
+| `source="Delhi"` | Source value directly source parameter ko milegi. |
+
+### Important Point
+
+Keyword arguments mein order matter nahi karta because values parameter names ke saath pass hoti hain.
+
+---
+
+## Code Explanation 28 - Lambda Function
+
+### Code
+
+```python
+square = lambda x: x * x
+
+print(square(5))
+```
+
+### What This Code Does
+
+Ye one-line function number ka square calculate karta hai.
+
+### Line-by-Line Explanation
+
+| Code | Simple Hinglish Explanation |
+|---|---|
+| `lambda x:` | Function ek input leta hai called `x`. |
+| `x * x` | Input ka square return hota hai. |
+| `square = ...` | Lambda function ko square variable mein store kiya. |
+| `square(5)` | 5 ka square calculate hota hai. |
+
+### Output Reason
+
+```text
+25
+```
+
+Because:
+
+```text
+5 * 5 = 25
+```
+
+---
+
+## Code Explanation 29 - Lambda Sort by Price
+
+### Code
+
+```python
+products = [
+    {"name": "Keyboard", "price": 1200},
+    {"name": "Mouse", "price": 500},
+    {"name": "Monitor", "price": 9000}
+]
+
+products.sort(key=lambda product: product["price"])
+
+print(products)
+```
+
+### What This Code Does
+
+Ye code products ko price ke basis par low to high sort karta hai.
+
+### Line-by-Line Explanation
+
+| Line | Code | Simple Hinglish Explanation |
+|---|---|---|
+| 1-5 | `products = [...]` | Products ki list hai. Har product dictionary hai. |
+| 7 | `products.sort(...)` | Original products list sort hoti hai. |
+| 7 | `key=` | Sorting kis basis par hogi, ye batata hai. |
+| 7 | `lambda product: product["price"]` | Har product mein se price value lo and uske basis par sort karo. |
+| 9 | `print(products)` | Sorted products print hote hain. |
+
+### Output Reason
+
+Products price ke basis par sorted:
+
+```text
+Mouse: 500
+Keyboard: 1200
+Monitor: 9000
+```
+
+### Real-World Use
+
+E-commerce website mein “Sort by Price: Low to High” feature same type ke logic se ban sakta hai.
+
+---
+
 # Practice Questions
 
 ## Question 1 - Shopping Cart
